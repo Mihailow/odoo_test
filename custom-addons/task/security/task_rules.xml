@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="rule_task1_read_all" model="ir.rule">
+        <field name="name">Task1: Read All</field>
+        <field name="model_id" ref="model_task_model"/>
+        <field name="groups" eval="[(4, ref('task.group_task_creator_edit_button_own'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="rule_task1_write_own" model="ir.rule">
+        <field name="name">Task1: Write Own</field>
+        <field name="model_id" ref="model_task_model"/>
+        <field name="groups" eval="[(4, ref('task.group_task_creator_edit_button_own'))]"/>
+        <field name="domain_force">[('create_uid','=',user.id)]</field>
+        <field name="perm_read" eval="0"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="rule_task2_read_all" model="ir.rule">
+        <field name="name">Task2: Read All</field>
+        <field name="model_id" ref="model_task_model"/>
+        <field name="groups" eval="[(4, ref('task.group_task_button_all_edit_own'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="rule_task2_write_own" model="ir.rule">
+        <field name="name">Task2: Write Own</field>
+        <field name="model_id" ref="model_task_model"/>
+        <field name="groups" eval="[(4, ref('task.group_task_button_all_edit_own'))]"/>
+        <field name="domain_force">[('create_uid','=',user.id)]</field>
+        <field name="perm_read" eval="0"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="rule_task3_full" model="ir.rule">
+        <field name="name">Task3: Full Access</field>
+        <field name="model_id" ref="model_task_model"/>
+        <field name="groups" eval="[(4, ref('task.group_task_full_access'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+</odoo>
